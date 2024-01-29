@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors');
 
 const PORT = 3000;
+const usersRoutes = require('./routes/users.routes');
 // Rutas
 
 // Middlewares para cliente
@@ -16,6 +17,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 // Uso de rutas
+app.use('/api/users', usersRoutes);
 
 app.listen(PORT, () => {
   console.log('Server Listen');
