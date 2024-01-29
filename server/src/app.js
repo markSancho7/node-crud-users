@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 
+const PORT = 3000;
 // Rutas
 
 // Middlewares para cliente
@@ -9,11 +10,13 @@ const cors = require('cors');
 const corsOptions = {
   origin: 'http://localhost:5173', // Dominios autorizados
   methods: '*', // Métodos permitidos
-  optionsSuccessStatus: 204
+  optionsSuccessStatus: 204,
 };
 app.use(cors(corsOptions));
 app.use(express.json());
 
 // Uso de rutas
 
-app.listen(3000, () => console.log('Servidor en ejecución en el puerto 3000'));
+app.listen(PORT, () => {
+  console.log('Server Listen');
+});
