@@ -18,7 +18,7 @@ const Main = () => {
 					key={user.userId}
 					idUsuario={user.userId}
 					{...user}
-					actionDelete={userID => deleteUser(userID, usersList, setUsersList)}
+					actionDelete={userID => deleteUser(userID, setUsersList)}
 				/>
 			))}
 		</>
@@ -29,10 +29,9 @@ const getAllUsers = async setUsersList => {
 	const data = await getData(URLS.API_USERS);
 	setUsersList(data);
 };
-const deleteUser = async (userID, usersList, setUsersList) => {
-	// const data = await deleteData(URLS.API_USERS);
-	const deletedUser = usersList.filter(user => user.userId !== userID);
-
-	console.log(deletedUser);
+const deleteUser = async (userID, setUsersList) => {
+	const usersUpdated = await deleteData(`${URLS.API_USERS}/${userID}`);
+	setUsersList(usersUpdated);
 };
+
 export default Main;
