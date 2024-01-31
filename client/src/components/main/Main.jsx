@@ -3,6 +3,7 @@ import Form from '../form/Form';
 import { URLS } from '../../constants/urls';
 import User from '../user/User';
 import { deleteData, getData } from '../../utils/api';
+import CreateUser from '../createUser/CreateUser';
 
 const Main = () => {
 	const [usersList, setUsersList] = useState([]);
@@ -21,6 +22,7 @@ const Main = () => {
 					actionDelete={userID => deleteUser(userID, setUsersList)}
 				/>
 			))}
+			<CreateUser setUsersList={setUsersList} />
 		</>
 	);
 };
